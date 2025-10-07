@@ -1,10 +1,9 @@
-// Parker Richards Music - official website
+// HOOD BOYZ - official website
 // This is the main file that controls the layout and background of the website
 import React from 'react';
 import logo from './assets/logo.svg';
-// BACKGROUND VIDEO: Change the filename below to use a different background video
-// Make sure your new video is saved in the src/assets/ folder
-import bgVideo from './assets/Musician_Playing_Upright_Piano_In_Atmospheric_Vintage_Cafe_fhd_3381264.mp4';
+// BACKGROUND IMAGE: The main background image
+import bgImage from './assets/IMG_0854_50.jpg';
 import boltLogo from './assets/made-in-bolt.png';
 // MUSIC FILE: Change the filename below to use a different song
 // Your audio file should be MP3 format and saved in src/assets/ folder
@@ -19,8 +18,7 @@ function App() {
   const audioRef = React.useRef<HTMLAudioElement>(null);
   const [isHovered, setIsHovered] = React.useState(false);
   const [isMobile, setIsMobile] = React.useState(false);
-  const videoRef = React.useRef<HTMLVideoElement>(null);
-  const [videoError, setVideoError] = React.useState(false);
+  const [imageLoaded, setImageLoaded] = React.useState(false);
   
   // Check if device is mobile (this controls different layouts for phones vs computers)
   React.useEffect(() => {
@@ -69,41 +67,50 @@ function App() {
         transition: 'filter 0.3s ease-out'
       }}
     >
-      {/* BACKGROUND VIDEO SECTION - This displays your main background video */}
+      {/* BACKGROUND IMAGE SECTION - This displays the main background image with motion picture effect */}
       <div
         className="absolute inset-0 z-0 transition-all duration-300 ease-out"
         style={{
           // HOVER EFFECTS: These create the zoom and brightness effects when you hover over the logo
           transform: (isHovered && !isMobile) ? 'scale(1.02)' : 'scale(1)',
           filter: (isHovered && !isMobile) ? 'brightness(0.95)' : 'brightness(0.975)',
-          backgroundColor: '#1a1a1a', // Fallback background color
+          backgroundColor: '#1a1a1a',
         }}
       >
-        {!videoError ? (
-          <video
-            ref={videoRef}
-            autoPlay
-            muted
-            loop
-            playsInline
+        <div
+          className="w-full h-full relative overflow-hidden"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%)',
+          }}
+        >
+          <img
+            src={bgImage}
+            alt="HOOD BOYZ"
             className="w-full h-full object-cover"
             style={{
               objectPosition: 'center',
+              animation: 'slowZoom 20s ease-in-out infinite alternate',
+              filter: 'contrast(1.1) saturate(1.2)',
             }}
-            aria-label="Julian Hartmann music atmospheric cafe background video"
-            onError={() => setVideoError(true)}
-          >
-            <source src={bgVideo} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        ) : (
-          <div 
-            className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-black"
+            onLoad={() => setImageLoaded(true)}
+          />
+          {/* Film grain overlay for motion picture effect */}
+          <div
+            className="absolute inset-0 pointer-events-none"
             style={{
-              backgroundImage: 'radial-gradient(circle at 30% 50%, rgba(139, 69, 19, 0.3) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(101, 67, 33, 0.2) 0%, transparent 50%)',
+              backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
+              opacity: 0.03,
+              mixBlendMode: 'overlay',
             }}
           />
-        )}
+          {/* Vignette effect */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: 'radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%)',
+            }}
+          />
+        </div>
       </div>
       
       {/* MOBILE LOGO - This shows the logo in the top-left corner on phones */}
@@ -114,10 +121,10 @@ function App() {
             filter: 'drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3))',
           }}
         >
-          Julian Hartmann
+          HOOD BOYZ
         </h1>
       </div>
-      
+
       {/* DESKTOP LOGO - This shows the large logo on the left side on computers */}
       <div className="hidden lg:block absolute top-0 bottom-0 left-[8%] w-1/3 flex items-center justify-start z-30">
         <div 
@@ -133,7 +140,7 @@ function App() {
               transform: (isHovered && !isMobile) ? 'scale(1.2) rotate(1deg)' : 'scale(1) rotate(0deg)',
             }}
           >
-            Julian Hartmann
+            HOOD BOYZ
           </h1>
         </div>
       </div>
