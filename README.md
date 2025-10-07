@@ -1,4 +1,4 @@
-# Musician website Bolt template
+# Musician website template
 
 This is the Musician website Bolt template, built with modern web technologies and designed to showcase the artist's music and social media presence.
 
@@ -131,4 +131,4 @@ src/
 
 ---
 
-*This website was built with React, TypeScript, and Tailwind CSS, and is powered by Bolt.new*
+*This website was built with React, TypeScript, and Tailwind CSS
