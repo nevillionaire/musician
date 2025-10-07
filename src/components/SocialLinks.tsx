@@ -29,7 +29,7 @@ const socialLinks: SocialLink[] = [
   },
   {
     href: 'https://www.tiktok.com/@YOUR_TIKTOK',
-    icon: '/src/assets/icons/tiktok.svg',
+    icon: '/src/assets/icons/tik-tok.svg',
     alt: 'Follow on TikTok'
   }
 ];
