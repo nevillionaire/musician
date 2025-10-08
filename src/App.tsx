@@ -1,13 +1,6 @@
 // HOOD BOYZ - official website
 // This is the main file that controls the layout and background of the website
 import React from 'react';
-import logo from './assets/logo.svg';
-// BACKGROUND IMAGE: The main background image
-import bgImage from './assets/IMG_0854_50.jpg';
-import boltLogo from './assets/made-in-bolt.png';
-// MUSIC FILE: Change the filename below to use a different song
-// Your audio file should be MP3 format and saved in src/assets/ folder
-import audioFile from './assets/Challenge_Completed_no_lead_variation_MP3.mp3';
 import { SocialLinks } from './components/SocialLinks';
 import { ActionLinks } from './components/ActionLinks';
 import { AudioControl } from './components/AudioControl';
@@ -15,7 +8,7 @@ import { ConfettiEffect } from './components/ConfettiEffect';
 import { MerchandiseSection } from './components/MerchandiseSection';
 
 function App() {
-  const audioRef = React.useRef<HTMLAudioElement>(null);
+  const audioRef = React.useRef<HTMLAudioElement | null>(null);
   const [isHovered, setIsHovered] = React.useState(false);
   const [isMobile, setIsMobile] = React.useState(false);
   const [imageLoaded, setImageLoaded] = React.useState(false);
@@ -67,33 +60,22 @@ function App() {
         transition: 'filter 0.3s ease-out'
       }}
     >
-      {/* BACKGROUND IMAGE SECTION - This displays the main background image with motion picture effect */}
+      {/* BACKGROUND SECTION - Placeholder background until image is added */}
       <div
         className="absolute inset-0 z-0 transition-all duration-300 ease-out"
         style={{
           // HOVER EFFECTS: These create the zoom and brightness effects when you hover over the logo
           transform: (isHovered && !isMobile) ? 'scale(1.02)' : 'scale(1)',
           filter: (isHovered && !isMobile) ? 'brightness(0.95)' : 'brightness(0.975)',
-          backgroundColor: '#1a1a1a',
         }}
       >
         <div
           className="w-full h-full relative overflow-hidden"
           style={{
-            background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%)',
+            background: 'linear-gradient(135deg, #FF8C00 0%, #FFA500 25%, #FF6B35 50%, #FF8C00 75%, #FFA500 100%)',
+            animation: 'slowZoom 20s ease-in-out infinite alternate',
           }}
         >
-          <img
-            src={bgImage}
-            alt="HOOD BOYZ"
-            className="w-full h-full object-cover"
-            style={{
-              objectPosition: 'center',
-              animation: 'slowZoom 20s ease-in-out infinite alternate',
-              filter: 'contrast(1.1) saturate(1.2)',
-            }}
-            onLoad={() => setImageLoaded(true)}
-          />
           {/* Film grain overlay for motion picture effect */}
           <div
             className="absolute inset-0 pointer-events-none"
@@ -145,28 +127,10 @@ function App() {
         </div>
       </div>
       
-      {/* AUDIO ELEMENT - This is the invisible audio player that plays your music */}
-      <audio
-        ref={audioRef}
-        preload="auto"
-        loop
-        src={audioFile}
-      />
       
       <div className="fixed top-4 left-4 right-4 sm:top-8 sm:left-8 sm:right-8 z-20">
         <div className="flex justify-between items-center">
           <div></div>
-          {/* BOLT.NEW LOGO - This shows the "Powered by Bolt.new" logo in the top-right */}
-          <a
-            href="https://bolt.new/"
-            className="hover:opacity-75 transition-opacity"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Powered with Bolt.new"
-            aria-label="Website powered by Bolt.new"
-          >
-            <img src={boltLogo} alt="Made with Bolt.new" className="w-auto h-auto object-contain max-h-8 sm:max-h-full" />
-          </a>
         </div>
       </div>
       

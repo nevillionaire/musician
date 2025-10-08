@@ -8,27 +8,27 @@ interface SocialLink {
 
 const socialLinks: SocialLink[] = [
   {
-    href: 'https://open.spotify.com/artist/YOUR_SPOTIFY_ID',
+    href: 'https://open.spotify.com/artist/1yONcOLoE5kSfTqTHmqrdR',
     icon: '/src/assets/icons/spotify.svg',
     alt: 'Listen on Spotify'
   },
   {
-    href: 'https://music.apple.com/artist/YOUR_APPLE_MUSIC_ID',
+    href: 'https://music.apple.com/ke/artist/hood-boyz/1767790320',
     icon: '/src/assets/icons/apple-music.svg',
     alt: 'Listen on Apple Music'
   },
   {
-    href: 'https://www.youtube.com/@YOUR_YOUTUBE_CHANNEL',
+    href: 'https://www.youtube.com/@Hoodboyzke',
     icon: '/src/assets/icons/youtube.svg',
     alt: 'Watch on YouTube'
   },
   {
-    href: 'https://www.instagram.com/YOUR_INSTAGRAM',
+    href: 'https://www.instagram.com/hoodboyzke',
     icon: '/src/assets/icons/instagram.svg',
     alt: 'Follow on Instagram'
   },
   {
-    href: 'https://www.tiktok.com/@YOUR_TIKTOK',
+    href: 'https://www.tiktok.com/@hoodboyzke',
     icon: '/src/assets/icons/tik-tok.svg',
     alt: 'Follow on TikTok'
   }
